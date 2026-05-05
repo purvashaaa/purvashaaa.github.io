@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Purvasha Nidar — Economist & Data Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F9F8F6;
+    --white: #FFFFFF;
+    --navy: #1B2B4B;
+    --navy-light: #2D4270;
+    --navy-pale: #EEF1F7;
+    --ink: #1A1A1A;
+    --ink2: #3D3D3D;
+    --ink3: #7A7A7A;
+    --border: rgba(27,43,75,0.12);
+    --border-soft: rgba(27,43,75,0.06);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(249,248,246,0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-soft);
+    padding: 0 max(2rem, 6vw);
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--navy);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--navy); }
+  .hero {
+    min-height: 100vh;
+    padding: 120px max(2rem, 8vw) 80px;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 5rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .hero-eyebrow {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background: var(--navy);
+  }
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.2rem, 6vw, 5.2rem);
+    font-weight: 500;
+    line-height: 1.04;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+  .hero-name em { font-style: italic; color: var(--navy); }
+  .hero-bio {
+    font-size: 0.97rem;
+    font-weight: 300;
+    color: var(--ink2);
+    line-height: 1.85;
+    max-width: 480px;
+    margin-bottom: 2rem;
+  }
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-bottom: 2.5rem;
+  }
+  .tag {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    padding: 0.3rem 0.8rem;
+    border: 1px solid var(--border);
+    color: var(--ink2);
+    transition: all 0.2s;
+    cursor: default;
+  }
+  .tag:hover { background: var(--navy); color: white; border-color: var(--navy); }
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.85rem 2rem;
+    background: var(--navy);
+    color: white;
+    border: none;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--navy-light); }
+  .btn-outline {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.85rem 2rem;
+    background: transparent;
+    color: var(--navy);
+    border: 1px solid var(--navy);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-outline:hover { background: var(--navy); color: white; }
+  .hero-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1.5rem;
+  }
+  .photo-frame {
+    width: 100%;
+    max-width: 340px;
+    aspect-ratio: 4/5;
+    background: var(--navy-pale);
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+  }
+  .photo-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .photo-initials {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+  .photo-hint {
+    font-size: 0.72rem;
+    color: var(--ink3);
+    text-align: center;
+    padding: 0 1.5rem;
+    line-height: 1.5;
+  }
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    width: 100%;
+    max-width: 340px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .stat-cell { background: var(--white); padding: 1rem; text-align: center; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .stat-label {
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink3);
+  }
+  /* SECTION WRAPPER */
+  .sec-wrap {
+    padding: 80px max(2rem, 8vw);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .sec-wrap-full {
+    padding: 80px max(2rem, 8vw);
+  }
+  .sec-wrap-full .inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-num {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    color: var(--navy);
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  /* ABOUT */
+  #about { background: var(--white); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .about-text p {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--ink2);
+    line-height: 1.9;
+    margin-bottom: 1.25rem;
+  }
+  .about-text p:last-child { margin-bottom: 0; }
+  .sidebar-label {
+    font-size: 0.66rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 0.75rem;
+  }
+  .sidebar-block { margin-bottom: 2rem; }
+  .sidebar-block ul { list-style: none; }
+  .sidebar-block li {
+    font-size: 0.86rem;
+    font-weight: 300;
+    color: var(--ink2);
+    padding: 0.3rem 0;
+    border-bottom: 1px solid var(--border-soft);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .sidebar-block li::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--navy);
+    flex-shrink: 0;
+  }
+  /* EXPERIENCE */
+  .exp-item {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 3rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .exp-item:first-child { padding-top: 0; }
+  .exp-year { font-size: 0.73rem; font-weight: 500; letter-spacing: 0.08em; color: var(--navy); margin-bottom: 0.2rem; }
+  .exp-org { font-size: 0.78rem; font-weight: 400; color: var(--ink3); }
+  .exp-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+  .exp-bullets { list-style: none; }
+  .exp-bullets li {
+    font-size: 0.88rem;
+    font-weight: 300;
+    color: var(--ink2);
+    padding: 0.25rem 0 0.25rem 1.2rem;
+    position: relative;
+    line-height: 1.6;
+  }
+  .exp-bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--navy);
+    font-size: 0.72rem;
+    top: 0.3rem;
+  }
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .project-card {
+    background: var(--white);
+    padding: 2rem;
+    text-decoration: none;
+    display: block;
+    transition: background 0.2s;
+  }
+  .project-card:hover { background: var(--navy-pale); }
+  .project-card:hover .proj-arrow { transform: translate(3px, -3px); }
+  .proj-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.25rem;
+  }
+  .proj-num { font-size: 0.64rem; font-weight: 500; letter-spacing: 0.15em; color: var(--navy); }
+  .proj-arrow { font-size: 1rem; color: var(--navy); transition: transform 0.2s; }
+  .proj-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.12rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.3;
+    margin-bottom: 0.7rem;
+  }
+  .proj-desc {
+    font-size: 0.82rem;
+    font-weight: 300;
+    color: var(--ink3);
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+  .proj-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .proj-tag {
+    font-size: 0.64rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    padding: 0.22rem 0.6rem;
+    background: var(--navy-pale);
+    color: var(--navy);
+  }
+  /* SKILLS */
+  #skills-section { background: var(--navy); }
+  #skills-section .section-title { color: white; }
+  #skills-section .section-num { color: rgba(255,255,255,0.45); }
+  #skills-section .section-header { border-bottom-color: rgba(255,255,255,0.1); }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2.5rem;
+  }
+  .skill-group-label {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .skill-item {
+    font-size: 0.87rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.82);
+    padding: 0.38rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .skill-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    flex-shrink: 0;
+  }
+  /* CONTACT */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .contact-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.75rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.4;
+    margin-bottom: 2rem;
+  }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.95rem 0;
+    border-bottom: 1px solid var(--border-soft);
+    text-decoration: none;
+    color: var(--ink2);
+    font-size: 0.88rem;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+  .contact-link:hover { color: var(--navy); }
+  .contact-link-label {
+    font-size: 0.63rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink3);
+  }
+  .edu-item {
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .edu-item:last-child { border-bottom: none; margin-bottom: 0; }
+  .edu-year { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; color: var(--navy); margin-bottom: 0.3rem; }
+  .edu-degree {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+  .edu-inst { font-size: 0.8rem; font-weight: 300; color: var(--ink3); }
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.35);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.73rem;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-text { animation: fadeUp 0.65s ease both; }
+  .hero-visual { animation: fadeUp 0.65s ease 0.15s both; }
+  [id] { scroll-margin-top: 72px; }
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; padding-top: 90px; gap: 3rem; }
+    .hero-visual { align-items: flex-start; }
+    .photo-frame { max-width: 240px; }
+    .stat-row { max-width: 240px; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.4rem; }
+    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-name">Purvasha Nidar</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Research</a></li>
+    <li><a href="#skills-section">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Economist &amp; Data Analyst</p>
+    <h1 class="hero-name">Purvasha<br><em>Nidar</em></h1>
+    <p class="hero-bio">
+      Final-year MA Economics student at Delhi School of Economics. I apply econometric methods, causal inference, and statistical modelling to real-world questions in finance, policy, and behaviour.
+    </p>
+    <div class="hero-tags">
+      <span class="tag">Causal Inference</span>
+      <span class="tag">Panel Data</span>
+      <span class="tag">Machine Learning</span>
+      <span class="tag">R &amp; Python</span>
+      <span class="tag">Policy Analytics</span>
+      <span class="tag">Financial Sector</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">View Research</a>
+      <a href="mailto:purvashanidar.gs@gmail.com" class="btn-outline">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <!-- TO ADD YOUR PHOTO: upload photo.jpg to your GitHub repo and replace the placeholder below with:
+         <img src="photo.jpg" alt="Purvasha Nidar"> -->
+    <div class="photo-frame">
+      <div class="photo-placeholder">
+        <div class="photo-initials">PN</div>
+        <p class="photo-hint">Upload your photo to GitHub<br>and replace this placeholder</p>
+      </div>
+    </div>
+    <div class="stat-row">
+      <div class="stat-cell">
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Projects</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">RBI</div>
+        <div class="stat-label">Internship</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">DSE</div>
+        <div class="stat-label">MA Eco</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div id="about" class="sec-wrap-full">
+  <div class="inner">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-title">About</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I am a final-year MA Economics student at the Delhi School of Economics — one of India's most rigorous economics programmes. My training has given me deep foundations in econometrics, causal inference, and quantitative analysis, which I apply to questions at the intersection of finance, policy, and human behaviour.</p>
+        <p>At the Reserve Bank of India, I analysed credit growth and portfolio stress dynamics across 70 NBFCs — applying regression modelling and lagged correlation analysis to understand what drives non-performing assets. The work gave me hands-on exposure to financial sector data at scale, sharpening both my technical and interpretive instincts.</p>
+        <p>Beyond numbers, I am drawn to the story data tells. Whether it is the hidden cost of a family health shock on a child's education, or how price sensitivity shapes daily choices for students in Delhi — I look for research questions grounded in lived reality. I bring the same rigour to everything: code, writing, or a national case competition on hedge fund strategy.</p>
+      </div>
+      <div class="about-sidebar">
+        <div class="sidebar-block">
+          <p class="sidebar-label">Econometric Methods</p>
+          <ul>
+            <li>Difference-in-Differences</li>
+            <li>IV / 2SLS / GMM</li>
+            <li>Panel Data &amp; Fixed Effects</li>
+            <li>Ordered Logit / Probit</li>
+            <li>Lasso / Ridge / Elastic Net</li>
+          </ul>
+        </div>
+        <div class="sidebar-block">
+          <p class="sidebar-label">Recognition</p>
+          <ul>
+            <li>JNU &amp; IGIDR Admission 2024</li>
+            <li>KaryaNeeti Finalist — NSUT Delhi</li>
+            <li>9/10 in R &amp; Research Methods</li>
+            <li>French Language Distinction</li>
+            <li>Chess Team — 1st Place DRC</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div id="experience" class="sec-wrap">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Experience</h2>
+  </div>
+
+  <div class="exp-item">
+    <div>
+      <p class="exp-year">Summer 2025</p>
+      <p class="exp-org">Reserve Bank of India</p>
+    </div>
+    <div>
+      <p class="exp-role">Research Intern</p>
+      <ul class="exp-bullets">
+        <li>Analysed 500+ quarterly observations from 70 NBFCs to identify linkages between credit growth and portfolio stress (PAR)</li>
+        <li>Applied regression modelling and lagged correlation analysis; found interest rates above 24% significantly associated with higher NPAs</li>
+        <li>Produced a structured research report integrating statistical findings with sector-level policy implications</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exp-item">
+    <div>
+      <p class="exp-year">2024 – Present</p>
+      <p class="exp-org">Delhi School of Economics</p>
+    </div>
+    <div>
+      <p class="exp-role">Senior Coordinator, Placement Cell</p>
+      <ul class="exp-bullets">
+        <li>Acting as the interface between corporates and 500+ students for placements and internships</li>
+        <li>Cultivating relationships with ~100 corporate recruiters, significantly expanding opportunities for the batch</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exp-item">
+    <div>
+      <p class="exp-year">2023 – 2024</p>
+      <p class="exp-org">Daulat Ram College, DU</p>
+    </div>
+    <div>
+      <p class="exp-role">President, Global Association of Economic Education</p>
+      <ul class="exp-bullets">
+        <li>Launched Project Vittalaya — a financial literacy campaign reaching 100+ underprivileged school students</li>
+        <li>Moderated a panel with speakers from IMF, Delhi University, and Economic Times for 600+ students from top IITs</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exp-item">
+    <div>
+      <p class="exp-year">2023</p>
+      <p class="exp-org">Social House Learning</p>
+    </div>
+    <div>
+      <p class="exp-role">Public Relations Intern</p>
+      <ul class="exp-bullets">
+        <li>Managed outreach to 30+ sponsors and media partners for the New Delhi Global Youth Summit</li>
+        <li>Led a 200+ volunteer team ensuring a seamless event at SRCC with 2,000+ participants</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<div id="projects" class="sec-wrap" style="padding-top: 0;">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Research &amp; Projects</h2>
+  </div>
+  <div class="projects-grid">
+
+    <a class="project-card" href="#">
+      <div class="proj-head"><span class="proj-num">P.01</span><span class="proj-arrow">↗</span></div>
+      <h3 class="proj-title">NBFC Credit Growth &amp; Portfolio Stress Analysis</h3>
+      <p class="proj-desc">Analysed determinants of portfolio stress across 70 NBFCs using quarterly RBI data. Examined how credit growth, interest rates, and macro conditions relate to NPA levels and PAR metrics.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">Regression Analysis</span>
+        <span class="proj-tag">Lagged Correlation</span>
+        <span class="proj-tag">R</span>
+        <span class="proj-tag">Financial Sector</span>
+      </div>
+    </a>
+
+    <a class="project-card" href="#">
+      <div class="proj-head"><span class="proj-num">P.02</span><span class="proj-arrow">↗</span></div>
+      <h3 class="proj-title">Family Health Shocks &amp; Educational Outcomes</h3>
+      <p class="proj-desc">Investigated how household health shocks affect children's test scores using 200,000+ observations. Applied ordered logit with district fixed effects and CLRM checks — results significant at 1%.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">Ordered Logit</span>
+        <span class="proj-tag">Fixed Effects</span>
+        <span class="proj-tag">Causal Inference</span>
+        <span class="proj-tag">R</span>
+      </div>
+    </a>
+
+    <a class="project-card" href="#">
+      <div class="proj-head"><span class="proj-num">P.03</span><span class="proj-arrow">↗</span></div>
+      <h3 class="proj-title">Causal Inference &amp; Prediction in Restaurant Ratings</h3>
+      <p class="proj-desc">Addressed endogeneity between review intensity and ratings using IV (2SLS) and two-step GMM. Compared penalised regressions and ML models (Random Forest, XGBoost) for prediction accuracy.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">IV / 2SLS</span>
+        <span class="proj-tag">GMM</span>
+        <span class="proj-tag">XGBoost</span>
+        <span class="proj-tag">Random Forest</span>
+        <span class="proj-tag">Python</span>
+      </div>
+    </a>
+
+    <a class="project-card" href="#">
+      <div class="proj-head"><span class="proj-num">P.04</span><span class="proj-arrow">↗</span></div>
+      <h3 class="proj-title">Price Hikes &amp; Cost of Living for Delhi Students</h3>
+      <p class="proj-desc">Primary survey of 75 students measuring inflation's impact on food, transport, and accommodation. Analysed price sensitivity and identified substitution effects and lifestyle adjustments.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">Primary Survey</span>
+        <span class="proj-tag">Consumer Behaviour</span>
+        <span class="proj-tag">Price Sensitivity</span>
+        <span class="proj-tag">R</span>
+      </div>
+    </a>
+
+    <a class="project-card" href="#">
+      <div class="proj-head"><span class="proj-num">P.05</span><span class="proj-arrow">↗</span></div>
+      <h3 class="proj-title">KaryaNeeti Case Competition — Hedge Fund Strategy</h3>
+      <p class="proj-desc">Reached the finals out of 400+ competing teams at a national case competition on hedge fund strategy and portfolio management, organised by NSUT Delhi.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">Financial Strategy</span>
+        <span class="proj-tag">Portfolio Analysis</span>
+        <span class="proj-tag">Case Competition</span>
+      </div>
+    </a>
+
+    <div class="project-card" style="opacity:0.38; cursor:default; background:var(--bg);">
+      <div class="proj-head"><span class="proj-num">P.06</span></div>
+      <h3 class="proj-title">More projects coming soon</h3>
+      <p class="proj-desc">Additional research and coursework projects will be added here as they are completed.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div id="skills-section" class="sec-wrap-full">
+  <div class="inner">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Skills &amp; Methods</h2>
+    </div>
+    <div class="skills-grid">
+      <div>
+        <p class="skill-group-label">Econometric Methods</p>
+        <div class="skill-item"><span class="skill-dot"></span>Panel Data &amp; Fixed Effects</div>
+        <div class="skill-item"><span class="skill-dot"></span>IV / 2SLS / GMM</div>
+        <div class="skill-item"><span class="skill-dot"></span>Difference-in-Differences</div>
+        <div class="skill-item"><span class="skill-dot"></span>Ordered Logit / Probit</div>
+        <div class="skill-item"><span class="skill-dot"></span>Time Series Analysis</div>
+      </div>
+      <div>
+        <p class="skill-group-label">Machine Learning</p>
+        <div class="skill-item"><span class="skill-dot"></span>Random Forest &amp; XGBoost</div>
+        <div class="skill-item"><span class="skill-dot"></span>Lasso / Ridge / Elastic Net</div>
+        <div class="skill-item"><span class="skill-dot"></span>Logistic Regression</div>
+        <div class="skill-item"><span class="skill-dot"></span>Model Evaluation &amp; Tuning</div>
+        <div class="skill-item"><span class="skill-dot"></span>Feature Engineering</div>
+      </div>
+      <div>
+        <p class="skill-group-label">Tools &amp; Languages</p>
+        <div class="skill-item"><span class="skill-dot"></span>R — regression, panel data</div>
+        <div class="skill-item"><span class="skill-dot"></span>Python — pandas, statsmodels</div>
+        <div class="skill-item"><span class="skill-dot"></span>SQL — querying &amp; analysis</div>
+        <div class="skill-item"><span class="skill-dot"></span>MS Excel &amp; PowerPoint</div>
+        <div class="skill-item"><span class="skill-dot"></span>LaTeX</div>
+      </div>
+      <div>
+        <p class="skill-group-label">Domain Knowledge</p>
+        <div class="skill-item"><span class="skill-dot"></span>Financial Sector &amp; NBFCs</div>
+        <div class="skill-item"><span class="skill-dot"></span>Development Economics</div>
+        <div class="skill-item"><span class="skill-dot"></span>Public Policy &amp; Governance</div>
+        <div class="skill-item"><span class="skill-dot"></span>Consumer Behaviour</div>
+        <div class="skill-item"><span class="skill-dot"></span>Causal Inference Design</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="sec-wrap">
+  <div class="section-header">
+    <span class="section-num">05</span>
+    <h2 class="section-title">Contact</h2>
+  </div>
+  <div class="contact-grid">
+    <div>
+      <p class="contact-intro">"Open to analyst and research roles in Delhi &amp; Gurgaon."</p>
+      <div>
+        <a class="contact-link" href="mailto:purvashanidar.gs@gmail.com">
+          <span class="contact-link-label">Email</span>
+          <span>purvashanidar.gs@gmail.com</span>
+        </a>
+        <a class="contact-link" href="https://linkedin.com/in/purvasha-nidar" target="_blank">
+          <span class="contact-link-label">LinkedIn</span>
+          <span>linkedin.com/in/purvasha-nidar ↗</span>
+        </a>
+        <a class="contact-link" href="tel:7840956276">
+          <span class="contact-link-label">Phone</span>
+          <span>+91 78409 56276</span>
+        </a>
+        <a class="contact-link" href="Purvasha_Nidar_CV.pdf" target="_blank">
+          <span class="contact-link-label">Resume</span>
+          <span>Download CV ↗</span>
+        </a>
+      </div>
+    </div>
+    <div>
+      <p class="sidebar-label" style="margin-bottom:1.5rem;">Education</p>
+      <div class="edu-item">
+        <p class="edu-year">2024 – 2026 (Expected)</p>
+        <p class="edu-degree">M.A. Economics</p>
+        <p class="edu-inst">Delhi School of Economics, University of Delhi</p>
+      </div>
+      <div class="edu-item">
+        <p class="edu-year">2021 – 2024</p>
+        <p class="edu-degree">B.A. Economics &amp; Mathematics</p>
+        <p class="edu-inst">Daulat Ram College, University of Delhi — 7.63/10</p>
+      </div>
+      <div class="edu-item">
+        <p class="edu-year">2021</p>
+        <p class="edu-degree">Class XII — 84.80%</p>
+        <p class="edu-inst">Bhavans BP Vidya Mandir, Nagpur</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>© 2026 Purvasha Nidar &nbsp;·&nbsp; Delhi School of Economics</footer>
+
+</body>
+</html>
