@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global Tariff Structures — Purvasha Nidar</title>
+
+
+<style>
+  :root { --bg:#F8F7F5; --white:#FFFFFF; --navy:#1B2B4B; --navy-pale:#EEF1F7; --ink:#111111; --ink2:#3A3A3A; --ink3:#888888; --border:rgba(27,43,75,0.1); --border-soft:rgba(0,0,0,0.06); }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-weight:400; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(248,247,245,0.95); backdrop-filter:blur(10px); border-bottom:1px solid var(--border-soft); height:58px; display:flex; align-items:center; justify-content:space-between; padding:0 max(1.5rem,6vw); }
+  .nav-logo { font-weight:600; font-size:0.9rem; color:var(--navy); text-decoration:none; }
+  .nav-back { font-size:0.75rem; font-weight:500; color:var(--ink3); text-decoration:none; transition:color 0.18s; }
+  .nav-back:hover { color:var(--navy); }
+  .proj-hero { padding:100px max(1.5rem,8vw) 60px; max-width:900px; margin:0 auto; }
+  .proj-label { font-size:0.68rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--navy); margin-bottom:1rem; display:flex; align-items:center; gap:0.6rem; }
+  .proj-label::before { content:''; width:20px; height:1.5px; background:var(--navy); display:block; }
+  .proj-title { font-family:Georgia,'Times New Roman',serif; font-size:clamp(1.8rem,4vw,2.8rem); font-weight:600; color:var(--ink); line-height:1.12; margin-bottom:1.25rem; letter-spacing:-0.02em; }
+  .proj-meta { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:2rem; }
+  .meta-tag { font-size:0.68rem; font-weight:600; letter-spacing:0.06em; padding:0.28rem 0.7rem; background:var(--navy-pale); color:var(--navy); border-radius:2px; }
+  .proj-abstract { font-size:1rem; font-weight:300; color:var(--ink2); line-height:1.9; border-left:3px solid var(--navy); padding-left:1.25rem; margin-bottom:3rem; }
+  .content-wrap { max-width:900px; margin:0 auto; padding:0 max(1.5rem,8vw) 80px; }
+  .section { margin-bottom:3rem; }
+  .section-heading { font-family:Georgia,'Times New Roman',serif; font-size:1.25rem; font-weight:600; color:var(--ink); margin-bottom:1rem; padding-bottom:0.5rem; border-bottom:1px solid var(--border); letter-spacing:-0.01em; }
+  .section p { font-size:0.93rem; font-weight:300; color:var(--ink2); line-height:1.85; margin-bottom:0.875rem; }
+  .section p:last-child { margin-bottom:0; }
+  .findings-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--border); border:1px solid var(--border); margin:1.5rem 0; }
+  .finding-card { background:var(--white); padding:1.5rem; }
+  .finding-num { font-family:Georgia,'Times New Roman',serif; font-size:1.4rem; font-weight:600; color:var(--navy); line-height:1; margin-bottom:0.4rem; }
+  .finding-label { font-size:0.78rem; font-weight:400; color:var(--ink2); line-height:1.5; }
+  .data-table { width:100%; border-collapse:collapse; margin:1.25rem 0; font-size:0.83rem; }
+  .data-table th { background:var(--navy); color:white; padding:0.65rem 1rem; text-align:left; font-weight:500; font-size:0.74rem; letter-spacing:0.05em; }
+  .data-table td { padding:0.6rem 1rem; border-bottom:1px solid var(--border-soft); color:var(--ink2); font-weight:300; }
+  .data-table tr:last-child td { border-bottom:none; }
+  .data-table tr:nth-child(even) td { background:var(--bg); }
+  .data-table td:first-child { font-weight:500; color:var(--ink); }
+  .result-box { background:var(--navy); color:white; padding:1.5rem 2rem; margin:1.5rem 0; border-radius:2px; }
+  .result-box p { font-size:0.9rem; font-weight:300; color:rgba(255,255,255,0.85); line-height:1.75; margin-bottom:0.5rem; }
+  .result-box p:last-child { margin-bottom:0; }
+  .result-box strong { color:white; font-weight:600; }
+  .contrib-box { background:var(--bg); border:1px solid var(--border); padding:1.25rem 1.5rem; margin-bottom:2rem; border-radius:2px; }
+  .contrib-label { font-size:0.63rem; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:var(--navy); margin-bottom:0.5rem; }
+  .contrib-box p { font-size:0.86rem; font-weight:300; color:var(--ink2); line-height:1.7; }
+  .country-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1px; background:var(--border); border:1px solid var(--border); margin:1.5rem 0; }
+  .country-card { background:var(--white); padding:1.25rem 1.5rem; }
+  .country-name { font-size:0.75rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--navy); margin-bottom:0.5rem; }
+  .country-card p { font-size:0.81rem; font-weight:300; color:var(--ink2); line-height:1.6; margin-bottom:0 !important; }
+  .back-btn { display:inline-flex; align-items:center; gap:0.5rem; font-size:0.78rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--navy); text-decoration:none; border:1.5px solid var(--navy); padding:0.7rem 1.5rem; transition:all 0.18s; margin-top:1rem; }
+  .back-btn:hover { background:var(--navy); color:white; }
+  footer { background:var(--ink); color:rgba(255,255,255,0.3); text-align:center; padding:1.75rem; font-size:0.72rem; }
+  @media(max-width:600px) { .country-grid { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Purvasha Nidar</a>
+  <a href="index.html#projects" class="nav-back">← Back to Research</a>
+</nav>
+
+<div class="proj-hero">
+  <p class="proj-label">EC702 Trade and Development · Delhi School of Economics · Group Paper</p>
+  <h1 class="proj-title">Global Trade Policy in Perspective: A Comparative Analysis of Tariff Structures Across 20 Countries</h1>
+  <div class="proj-meta">
+    <span class="meta-tag">Cross-Country Analysis</span>
+    <span class="meta-tag">Time-Series Trends</span>
+    <span class="meta-tag">Sector-Level Protection</span>
+    <span class="meta-tag">World Bank WDI</span>
+    <span class="meta-tag">WTO Tariff Profiles</span>
+    <span class="meta-tag">2012–2024</span>
+    <span class="meta-tag">20 Countries</span>
+  </div>
+  <p class="proj-abstract">This paper examines how tariff structures, trade openness, and sectoral composition have evolved across 20 developed, developing, and strategically important economies from 2012 to 2024. Using World Bank and WTO data, the study identifies a consistent pattern: average tariffs are low and declining, but sectoral protection — particularly in agriculture — remains significant and strategically deployed. Trade policy today is best characterised as a hybrid of liberalisation and selective protectionism.</p>
+</div>
+
+<div class="content-wrap">
+
+  <div class="section">
+    <div class="contrib-box">
+      <p class="contrib-label">My Contribution</p>
+      <p>Responsible for country-level analysis of the United States, Germany, Japan, South Korea, and Chile. Also authored the Comparative Analysis of Developed vs. Developing Economies (Section 6.2) and the Conclusion. These sections involved identifying cross-country patterns in tariff selectivity, sectoral divergence, and the relationship between development level and tariff strategy.</p>
+    </div>
+
+    <h2 class="section-heading">Key Findings at a Glance</h2>
+    <div class="findings-grid">
+      <div class="finding-card"><div class="finding-num">57%</div><div class="finding-label">South Korea's average agricultural tariff — vs. only 6.5% on non-agricultural goods. Starkest sectoral gap in the sample.</div></div>
+      <div class="finding-card"><div class="finding-num">10.5%</div><div class="finding-label">EU (Germany) average agricultural tariff vs. 4.1% for manufacturing — reflects EU Common Agricultural Policy protection.</div></div>
+      <div class="finding-card"><div class="finding-num">226%</div><div class="finding-label">Canada's dairy tariff — extreme protection in a politically sensitive sector, despite dairy contributing &lt;1% of GDP.</div></div>
+      <div class="finding-card"><div class="finding-num">~6%</div><div class="finding-label">Chile's uniform tariff rate across virtually all sectors — a deliberate low-distortion policy outlier among developing economies.</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-heading">Data &amp; Methodology</h2>
+    <p>The analysis draws on two primary sources: the World Bank World Development Indicators (WDI) for time-series data on weighted average applied tariffs, exports and imports as a share of GDP, trade openness, and sectoral value added (2012–2024); and WTO World Tariff Profiles (2024/2025) for detailed cross-sectional information on MFN applied rates, agricultural vs. non-agricultural breakdowns, and sector-specific tariff peaks.</p>
+    <p>The 20 countries are grouped into three analytical categories: developed economies (US, UK, Germany, Japan, Canada, France, Australia, South Korea), developing economies (India, China, Brazil, South Africa, Indonesia, Chile), and strategic/emerging economies (Malaysia, Saudi Arabia, Bangladesh, Russia, Vietnam, Turkey). This classification enables systematic comparison of how tariff strategies differ across development levels and strategic positioning.</p>
+    <p>The methodology combines time-series trend analysis (to identify liberalisation trajectories and structural breaks) with cross-country sector-level comparison (to identify where protection is concentrated and why).</p>
+  </div>
+
+  <div class="section">
+    <h2 class="section-heading">Country Analyses — My Sections</h2>
+    <div class="country-grid">
+
+      <div class="country-card">
+        <p class="country-name">United States</p>
+        <p>Low and stable average tariffs (~1–3%) throughout 2012–2022, interrupted by a targeted spike during the US-China trade war. This spike was strategic rather than structural — tariffs returned to pre-war levels once geopolitical objectives were addressed. Agricultural protection remains selectively high (dairy: 17.2%, beverages: 17.2%), while industrial sectors are largely open. The US regime reflects selective intervention rather than broad protectionism.</p>
+      </div>
+
+      <div class="country-card">
+        <p class="country-name">Germany (EU)</p>
+        <p>Tariff policy is set at the EU level via the Common External Tariff — Germany has no independent tariff instrument. Rates are stable and low, with non-agricultural tariffs averaging 4.1%. Agricultural protection is strong (average 10.5%; dairy 27.1%, sugar 18.1%) reflecting the EU's Common Agricultural Policy. Industrial sectors are highly liberalised — machinery at 1.7%, cotton/wool at 0%. Germany exemplifies institutional rule-based trade with concentrated agricultural protection.</p>
+      </div>
+
+      <div class="country-card">
+        <p class="country-name">Japan</p>
+        <p>The most pronounced sectoral divergence among developed economies. Agricultural average tariff: 11.9%; non-agricultural: 2.4%. Cereals face tariffs above 200%; machinery and transport equipment are at 0%. This dual structure reflects deliberate policy: strong protection for food security and rural income, near-total liberalisation of globally competitive industrial sectors. Japan's overall trend is toward gradual liberalisation, though agricultural reform remains politically constrained.</p>
+      </div>
+
+      <div class="country-card">
+        <p class="country-name">South Korea</p>
+        <p>The starkest sectoral split in the entire sample: agricultural average tariff of 57% vs. 6.5% for non-agricultural goods. Cereal tariffs exceed 211%; dairy averages 57.9%. In contrast, industrial goods are highly open — petroleum 4.4%, electronics near zero — supporting South Korea's export-oriented industrialisation model. This dual structure (extreme agricultural protection + liberal industrial trade) is strategically consistent and not an anomaly but a deliberate development choice.</p>
+      </div>
+
+      <div class="country-card">
+        <p class="country-name">Chile</p>
+        <p>A structural outlier among developing economies. Chile maintains a near-uniform tariff of approximately 6% across virtually all sectors — agriculture and non-agriculture alike — with almost no sector-specific peaks. This flat tariff structure reflects a deliberate policy of minimising distortions and maximising predictability, consistent with Chile's commodity-export-led growth model. Chile does not use tariffs to protect domestic manufacturing or agriculture — structural change is driven by comparative advantage, not protection.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-heading">Comparative Analysis: Developed vs. Developing Economies</h2>
+    <p>The cross-country comparison reveals systematic differences in how developed and developing economies use tariffs — not just in level but in purpose, variability, and sectoral targeting.</p>
+    <div class="result-box">
+      <p><strong>Developed economies</strong> maintain consistently low average tariffs (typically 1–3%), with minimal year-to-year variation. Protection is heavily concentrated in agriculture — a sector that contributes less than 2–3% of GDP in most developed countries. This agricultural protection is politically rather than economically motivated: food security concerns, rural income support, and strong farmer lobbies maintain high tariffs on dairy, cereals, and sugar even as overall trade regimes are highly liberal.</p>
+      <p><strong>Developing economies</strong> have higher and more variable average tariffs (typically 4–10%), and use tariffs more actively as instruments of industrial policy. Manufacturing protection (automobiles, textiles, chemicals) reflects deliberate attempts to build domestic industrial capacity. Agricultural tariffs are also high but for different reasons — often food security combined with rural employment protection rather than pure political economy.</p>
+      <p><strong>Key exceptions</strong> challenge the simple developed/developing binary: South Korea (developed, but extreme agricultural protection typical of developing economies), Chile (developing, but uniformly low tariffs typical of advanced open economies), and Malaysia (developing, but trade openness exceeding 130% of GDP — more open than most developed nations).</p>
+    </div>
+
+    <div style="overflow-x:auto; margin-top:1.5rem;">
+      <table class="data-table">
+        <thead><tr><th>Dimension</th><th>Developed Economies</th><th>Developing Economies</th></tr></thead>
+        <tbody>
+          <tr><td>Average tariff level</td><td>1–3%, stable</td><td>4–10%, more variable</td></tr>
+          <tr><td>Primary protection target</td><td>Agriculture (political economy)</td><td>Agriculture + Manufacturing (industrial policy)</td></tr>
+          <tr><td>Manufacturing tariffs</td><td>Near zero — global value chain access</td><td>5–18% — domestic industry building</td></tr>
+          <tr><td>Bound vs. applied gap</td><td>Small — limited policy flexibility</td><td>Large — significant room to raise tariffs</td></tr>
+          <tr><td>Trade openness</td><td>Stable, institutionally driven</td><td>Variable, more responsive to shocks</td></tr>
+          <tr><td>Non-tariff measures</td><td>Increasing (subsidies, regulations)</td><td>Growing but less institutionalised</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-heading">Conclusion</h2>
+    <p>Modern trade policy is not a choice between free trade and protectionism — it is a hybrid of both, deployed strategically at the sector level. Average tariffs are low and declining across virtually all 20 countries in the sample. Yet beneath the averages, highly selective protection persists: agriculture is consistently protected across developed and developing economies alike, for political and food security reasons that override efficiency considerations.</p>
+    <p>Manufacturing protection follows development logic — developing economies use tariffs to build industrial capacity, while developed economies have largely liberalised manufacturing to maintain global value chain competitiveness. Strategic and technology-intensive sectors are increasingly protected through non-tariff measures (subsidies, regulations, industrial policy) rather than tariffs, making simple tariff analysis insufficient for understanding the full scope of modern protectionism.</p>
+    <p>The policy implication is that policymakers must pursue a balanced approach: maintaining low tariffs in internationally competitive sectors while gradually reducing excessive protection where tariffs create long-run inefficiencies. For developing economies, tariff flexibility should be used cautiously — to support nascent industries without entrenching non-competitive sectors over the long term.</p>
+  </div>
+
+  <a href="index.html#projects" class="back-btn">← Back to All Projects</a>
+</div>
+
+<footer>© 2026 Purvasha Nidar &nbsp;·&nbsp; Delhi School of Economics</footer>
+</body>
+</html>

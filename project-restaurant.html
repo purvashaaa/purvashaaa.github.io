@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Predicting Restaurant Ratings — Purvasha Nidar</title>
+
+
+<style>
+  :root { --bg:#F8F7F5; --white:#FFFFFF; --navy:#1B2B4B; --navy-pale:#EEF1F7; --ink:#111111; --ink2:#3A3A3A; --ink3:#888888; --border:rgba(27,43,75,0.1); --border-soft:rgba(0,0,0,0.06); }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-weight:400; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(248,247,245,0.95); backdrop-filter:blur(10px); border-bottom:1px solid var(--border-soft); height:58px; display:flex; align-items:center; justify-content:space-between; padding:0 max(1.5rem,6vw); }
+  .nav-logo { font-weight:600; font-size:0.9rem; color:var(--navy); text-decoration:none; }
+  .nav-back { font-size:0.75rem; font-weight:500; color:var(--ink3); text-decoration:none; display:flex; align-items:center; gap:0.4rem; transition:color 0.18s; }
+  .nav-back:hover { color:var(--navy); }
+  .proj-hero { padding:100px max(1.5rem,8vw) 60px; max-width:900px; margin:0 auto; }
+  .proj-label { font-size:0.68rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--navy); margin-bottom:1rem; display:flex; align-items:center; gap:0.6rem; }
+  .proj-label::before { content:''; width:20px; height:1.5px; background:var(--navy); display:block; }
+  .proj-title { font-family:Georgia,'Times New Roman',serif; font-size:clamp(1.8rem,4vw,2.8rem); font-weight:600; color:var(--ink); line-height:1.12; margin-bottom:1.25rem; letter-spacing:-0.02em; }
+  .proj-meta { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:2rem; }
+  .meta-tag { font-size:0.68rem; font-weight:600; letter-spacing:0.06em; padding:0.28rem 0.7rem; background:var(--navy-pale); color:var(--navy); border-radius:2px; }
+  .proj-abstract { font-size:1rem; font-weight:300; color:var(--ink2); line-height:1.9; border-left:3px solid var(--navy); padding-left:1.25rem; margin-bottom:3rem; }
+  .content-wrap { max-width:900px; margin:0 auto; padding:0 max(1.5rem,8vw) 80px; }
+  .section { margin-bottom:3rem; }
+  .section-heading { font-family:Georgia,'Times New Roman',serif; font-size:1.25rem; font-weight:600; color:var(--ink); margin-bottom:1rem; padding-bottom:0.5rem; border-bottom:1px solid var(--border); letter-spacing:-0.01em; }
+  .section p { font-size:0.93rem; font-weight:300; color:var(--ink2); line-height:1.85; margin-bottom:0.875rem; }
+  .section p:last-child { margin-bottom:0; }
+  .findings-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--border); border:1px solid var(--border); margin:1.5rem 0; }
+  .finding-card { background:var(--white); padding:1.5rem; }
+  .finding-num { font-family:Georgia,'Times New Roman',serif; font-size:1.6rem; font-weight:600; color:var(--navy); line-height:1; margin-bottom:0.4rem; }
+  .finding-label { font-size:0.78rem; font-weight:400; color:var(--ink2); line-height:1.5; }
+  .leaderboard { width:100%; border-collapse:collapse; margin:1.25rem 0; font-size:0.85rem; }
+  .leaderboard th { background:var(--navy); color:white; padding:0.65rem 1rem; text-align:left; font-weight:500; font-size:0.75rem; letter-spacing:0.05em; }
+  .leaderboard td { padding:0.65rem 1rem; border-bottom:1px solid var(--border-soft); color:var(--ink2); font-weight:300; }
+  .leaderboard tr:last-child td { border-bottom:none; }
+  .leaderboard tr.winner td { background:var(--navy-pale); color:var(--navy); font-weight:500; }
+  .leaderboard tr:nth-child(even):not(.winner) td { background:var(--bg); }
+  .result-box { background:var(--navy); color:white; padding:1.5rem 2rem; margin:1.5rem 0; border-radius:2px; }
+  .result-box p { font-size:0.9rem; font-weight:300; color:rgba(255,255,255,0.85); line-height:1.75; margin-bottom:0.5rem; }
+  .result-box p:last-child { margin-bottom:0; }
+  .result-box strong { color:white; font-weight:600; }
+  .model-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); border:1px solid var(--border); margin:1.25rem 0; }
+  .model-card { background:var(--white); padding:1.25rem; }
+  .model-name { font-size:0.8rem; font-weight:600; color:var(--navy); margin-bottom:0.3rem; }
+  .model-desc { font-size:0.78rem; font-weight:300; color:var(--ink2); line-height:1.5; }
+  .back-btn { display:inline-flex; align-items:center; gap:0.5rem; font-size:0.78rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--navy); text-decoration:none; border:1.5px solid var(--navy); padding:0.7rem 1.5rem; transition:all 0.18s; margin-top:1rem; }
+  .back-btn:hover { background:var(--navy); color:white; }
+  footer { background:var(--ink); color:rgba(255,255,255,0.3); text-align:center; padding:1.75rem; font-size:0.72rem; }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Purvasha Nidar</a>
+  <a href="index.html#projects" class="nav-back">← Back to Research</a>
+</nav>
+
+<div class="proj-hero">
+  <p class="proj-label">EC401 Econometric Methods · Delhi School of Economics</p>
+  <h1 class="proj-title">Predicting Restaurant Ratings: Econometric &amp; Machine Learning Models</h1>
+  <div class="proj-meta">
+    <span class="meta-tag">IV / 2SLS</span><span class="meta-tag">GMM</span><span class="meta-tag">XGBoost</span><span class="meta-tag">Random Forest</span><span class="meta-tag">Lasso / Ridge</span><span class="meta-tag">Yelp Dataset</span><span class="meta-tag">R</span>
+  </div>
+  <p class="proj-abstract">This project compares the predictive power of 13 statistical and machine learning models on the Yelp Open Dataset, with the goal of predicting restaurant star ratings from structured business features. Using 30-fold cross-validation, XGBoost achieved the best performance (RMSE: 0.67, R²: 0.35), significantly outperforming all linear methods and confirming that restaurant ratings are driven by non-linear, interactive relationships.</p>
+</div>
+
+<div class="content-wrap">
+
+  <div class="section">
+    <h2 class="section-heading">Key Results</h2>
+    <div class="findings-grid">
+      <div class="finding-card"><div class="finding-num">0.67</div><div class="finding-label">XGBoost RMSE — best performing model across all 13 approaches</div></div>
+      <div class="finding-card"><div class="finding-num">0.35</div><div class="finding-label">R² achieved by XGBoost, highest across all models tested</div></div>
+      <div class="finding-card"><div class="finding-num">13</div><div class="finding-label">Models compared — from OLS to neural networks using 30-fold CV</div></div>
+      <div class="finding-card"><div class="finding-num">80:20</div><div class="finding-label">Train-test split used consistently for fair model comparison</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-heading">Research Objective</h2>
+    <p>Restaurant ratings are shaped by a complex mix of geography, cuisine type, service features, and social proof signals like review counts. The core question is whether this relationship is fundamentally linear — as OLS assumes — or whether non-linear interactions (e.g., cuisine × location, popularity × amenities) are driving the pattern.</p>
+    <p>This project tests both families of models on the Yelp Open Dataset, which contains structured business attributes for restaurants across the US and Canada. The assignment deliberately avoids causal claims — this is a pure prediction exercise — but the model comparison itself reveals important insights about the structure of rating behaviour.</p>
+  </div>
+
+  <div class="section">
+    <h2 class="section-heading">Data &amp; Preprocessing</h2>
+    <p>The raw Yelp dataset contained nested JSON structures (business.json). Preprocessing involved: filtering to restaurant-only observations; flattening nested attributes into binary/categorical dummy variables; one-hot encoding for cuisine types and city/state identifiers; imputing missing fields; and standardising continuous features for penalised regression models.</p>
+    <p>The target variable (Y) is the restaurant's star rating (1–5). Predictors (X) include review count, home delivery availability, alcohol service, pricing tier, cuisine category, location coordinates, and operating hours.</p>
+  </div>
+
+  <div class="section">
+    <h2 class="section-heading">Models Compared</h2>
+    <div class="model-grid">
+      <div class="model-card"><div class="model-name">Ordinary Least Squares</div><div class="model-desc">Linear benchmark. Assumes additive, linear relationships. Prone to multicollinearity with high-dimensional feature sets.</div></div>
+      <div class="model-card"><div class="model-name">Ridge Regression</div><div class="model-desc">Shrinks all coefficients toward zero to remedy multicollinearity. Retains all features but reduces their magnitude.</div></div>
+      <div class="model-card"><div class="model-name">Lasso &amp; Post-Lasso</div><div class="model-desc">Sets irrelevant coefficients to exactly zero, performing automatic feature selection. Post-Lasso re-runs OLS on selected variables.</div></div>
+      <div class="model-card"><div class="model-name">Elastic Net &amp; LAVA</div><div class="model-desc">Elastic Net combines Ridge and Lasso. LAVA is a hybrid shrinkage model balancing bias and flexibility.</div></div>
+      <div class="model-card"><div class="model-name">Random Forest</div><div class="model-desc">Ensemble of decision trees — reduces variance by averaging across many trees. Captures non-linear relationships and interactions.</div></div>
+      <div class="model-card"><div class="model-name">XGBoost</div><div class="model-desc">Gradient boosted trees — sequentially corrects errors of previous trees. State-of-the-art for tabular prediction tasks.</div></div>
+      <div class="model-card"><div class="model-name">Neural Network (MLP)</div><div class="model-desc">Multi-layer perceptron — flexible non-linear learner. Strong in principle but showed marginal gains over XGBoost here.</div></div>
+      <div class="model-card"><div class="model-name">Single Decision Tree</div><div class="model-desc">Simple interpretable rules. Worst performer due to high variance and tendency to overfit without ensemble averaging.</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-heading">Model Leaderboard</h2>
+    <table class="leaderboard">
+      <thead><tr><th>Model</th><th>RMSE</th><th>MAE</th><th>R²</th></tr></thead>
+      <tbody>
+        <tr class="winner"><td>XGBoost ★</td><td>0.6715</td><td>0.5281</td><td>0.3451</td></tr>
+        <tr><td>Random Forest</td><td>0.6767</td><td>0.5341</td><td>0.3351</td></tr>
+        <tr><td>Ensemble Mean</td><td>0.6897</td><td>0.5484</td><td>0.3115</td></tr>
+        <tr><td>Neural Network</td><td>0.6938</td><td>0.5475</td><td>0.3022</td></tr>
+        <tr><td>OLS</td><td>0.7200</td><td>0.5739</td><td>0.2471</td></tr>
+        <tr><td>Lasso</td><td>0.7200</td><td>0.5739</td><td>0.2471</td></tr>
+        <tr><td>Elastic Net</td><td>0.7201</td><td>0.5714</td><td>0.2469</td></tr>
+        <tr><td>Ridge</td><td>0.7201</td><td>0.5748</td><td>0.2469</td></tr>
+        <tr><td>LAVA</td><td>0.7200</td><td>0.5714</td><td>0.2469</td></tr>
+        <tr><td>Post-Lasso</td><td>0.7200</td><td>0.5738</td><td>0.2462</td></tr>
+        <tr><td>Decision Tree</td><td>0.7332</td><td>0.5943</td><td>0.2194</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2 class="section-heading">Key Insights</h2>
+    <div class="result-box">
+      <p><strong>Tree-based ML models significantly outperform all linear methods.</strong> This confirms that the mapping from business characteristics to star ratings is not additive or linear — non-linear interactions between cuisine type, location, and service features are crucial.</p>
+      <p><strong>All penalised regressions (Lasso, Ridge, Elastic Net) perform nearly identically to OLS</strong>, suggesting the feature relationships are dense rather than sparse — Lasso's variable selection gains are limited when most predictors matter.</p>
+      <p><strong>Fast Food is the dominant feature</strong> in both Random Forest and XGBoost importance rankings — suggesting cuisine category drives rating behaviour more than any service or location feature.</p>
+      <p><strong>R² below 0.35 for all models</strong> implies a large unobserved component — customer experience, service quality, and review text carry information that structured features alone cannot capture.</p>
+    </div>
+    <p>The natural extension of this work would incorporate NLP analysis of review text and temporal patterns in rating behaviour — both of which could substantially improve predictive accuracy.</p>
+  </div>
+
+  <a href="index.html#projects" class="back-btn">← Back to All Projects</a>
+</div>
+
+<footer>© 2026 Purvasha Nidar &nbsp;·&nbsp; Delhi School of Economics</footer>
+</body>
+</html>

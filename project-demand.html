@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consumer Demand: Tamil Nadu vs Maharashtra — Purvasha Nidar</title>
+
+
+<style>
+  :root { --bg:#F8F7F5; --white:#FFFFFF; --navy:#1B2B4B; --navy-pale:#EEF1F7; --ink:#111111; --ink2:#3A3A3A; --ink3:#888888; --border:rgba(27,43,75,0.1); --border-soft:rgba(0,0,0,0.06); }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-weight:400; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(248,247,245,0.95); backdrop-filter:blur(10px); border-bottom:1px solid var(--border-soft); height:58px; display:flex; align-items:center; justify-content:space-between; padding:0 max(1.5rem,6vw); }
+  .nav-logo { font-weight:600; font-size:0.9rem; color:var(--navy); text-decoration:none; }
+  .nav-back { font-size:0.75rem; font-weight:500; color:var(--ink3); text-decoration:none; display:flex; align-items:center; gap:0.4rem; transition:color 0.18s; }
+  .nav-back:hover { color:var(--navy); }
+  .proj-hero { padding:100px max(1.5rem,8vw) 60px; max-width:900px; margin:0 auto; }
+  .proj-label { font-size:0.68rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--navy); margin-bottom:1rem; display:flex; align-items:center; gap:0.6rem; }
+  .proj-label::before { content:''; width:20px; height:1.5px; background:var(--navy); display:block; }
+  .proj-title { font-family:Georgia,'Times New Roman',serif; font-size:clamp(1.8rem,4vw,2.8rem); font-weight:600; color:var(--ink); line-height:1.12; margin-bottom:1.25rem; letter-spacing:-0.02em; }
+  .proj-meta { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:2rem; }
+  .meta-tag { font-size:0.68rem; font-weight:600; letter-spacing:0.06em; padding:0.28rem 0.7rem; background:var(--navy-pale); color:var(--navy); border-radius:2px; }
+  .proj-abstract { font-size:1rem; font-weight:300; color:var(--ink2); line-height:1.9; border-left:3px solid var(--navy); padding-left:1.25rem; margin-bottom:3rem; }
+  .content-wrap { max-width:900px; margin:0 auto; padding:0 max(1.5rem,8vw) 80px; }
+  .section { margin-bottom:3rem; }
+  .section-heading { font-family:Georgia,'Times New Roman',serif; font-size:1.25rem; font-weight:600; color:var(--ink); margin-bottom:1rem; padding-bottom:0.5rem; border-bottom:1px solid var(--border); letter-spacing:-0.01em; }
+  .section p { font-size:0.93rem; font-weight:300; color:var(--ink2); line-height:1.85; margin-bottom:0.875rem; }
+  .section p:last-child { margin-bottom:0; }
+  .findings-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--border); border:1px solid var(--border); margin:1.5rem 0; }
+  .finding-card { background:var(--white); padding:1.5rem; }
+  .finding-num { font-family:Georgia,'Times New Roman',serif; font-size:1.5rem; font-weight:600; color:var(--navy); line-height:1; margin-bottom:0.4rem; }
+  .finding-label { font-size:0.78rem; font-weight:400; color:var(--ink2); line-height:1.5; }
+  .compare-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); border:1px solid var(--border); margin:1.5rem 0; }
+  .compare-card { background:var(--white); padding:1.5rem; }
+  .compare-state { font-size:0.65rem; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:var(--navy); margin-bottom:0.75rem; }
+  .compare-card ul { list-style:none; }
+  .compare-card li { font-size:0.84rem; font-weight:300; color:var(--ink2); padding:0.28rem 0 0.28rem 0.9rem; border-bottom:1px solid var(--border-soft); position:relative; line-height:1.5; }
+  .compare-card li::before { content:''; position:absolute; left:0; top:50%; transform:translateY(-50%); width:4px; height:4px; border-radius:50%; background:var(--navy); }
+  .compare-card li:last-child { border-bottom:none; }
+  .data-table { width:100%; border-collapse:collapse; margin:1.25rem 0; font-size:0.84rem; }
+  .data-table th { background:var(--navy); color:white; padding:0.65rem 1rem; text-align:left; font-weight:500; font-size:0.75rem; letter-spacing:0.05em; }
+  .data-table td { padding:0.65rem 1rem; border-bottom:1px solid var(--border-soft); color:var(--ink2); font-weight:300; }
+  .data-table tr:last-child td { border-bottom:none; }
+  .data-table tr:nth-child(even) td { background:var(--bg); }
+  .data-table td:first-child { font-weight:500; color:var(--ink); }
+  .result-box { background:var(--navy); color:white; padding:1.5rem 2rem; margin:1.5rem 0; border-radius:2px; }
+  .result-box p { font-size:0.9rem; font-weight:300; color:rgba(255,255,255,0.85); line-height:1.75; margin-bottom:0.5rem; }
+  .result-box p:last-child { margin-bottom:0; }
+  .result-box strong { color:white; font-weight:600; }
+  .contrib-box { background:var(--bg); border:1px solid var(--border); padding:1.25rem 1.5rem; margin-bottom:2rem; border-radius:2px; }
+  .contrib-label { font-size:0.63rem; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:var(--navy); margin-bottom:0.5rem; }
+  .contrib-box p { font-size:0.86rem; font-weight:300; color:var(--ink2); line-height:1.7; }
+  .method-row { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); border:1px solid var(--border); margin:1.25rem 0; }
+  .method-card { background:var(--white); padding:1.25rem 1.5rem; }
+  .method-name { font-size:0.8rem; font-weight:600; color:var(--navy); margin-bottom:0.4rem; }
+  .method-desc { font-size:0.8rem; font-weight:300; color:var(--ink2); line-height:1.6; }
+  .back-btn { display:inline-flex; align-items:center; gap:0.5rem; font-size:0.78rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--navy); text-decoration:none; border:1.5px solid var(--navy); padding:0.7rem 1.5rem; transition:all 0.18s; margin-top:1rem; }
+  .back-btn:hover { background:var(--navy); color:white; }
+  footer { background:var(--ink); color:rgba(255,255,255,0.3); text-align:center; padding:1.75rem; font-size:0.72rem; }
+  @media(max-width:600px) { .compare-grid,.method-row { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Purvasha Nidar</a>
+  <a href="index.html#projects" class="nav-back">← Back to Research</a>
+</nav>
+
+<div class="proj-hero">
+  <p class="proj-label">EC406 Applied Consumption Analysis · Delhi School of Economics</p>
+  <h1 class="proj-title">Consumer Demand &amp; Welfare Analysis:<br>Tamil Nadu vs Maharashtra</h1>
+  <div class="proj-meta">
+    <span class="meta-tag">Linear Expenditure System</span>
+    <span class="meta-tag">Almost Ideal Demand System</span>
+    <span class="meta-tag">Engel Curves</span>
+    <span class="meta-tag">Expenditure Elasticities</span>
+    <span class="meta-tag">NSSO 68th Round</span>
+    <span class="meta-tag">N ≈ 1,00,000</span>
+    <span class="meta-tag">R</span>
+  </div>
+  <p class="proj-abstract">This paper applies the Linear Expenditure System (LES) and the Almost Ideal Demand System (AIDS) to NSSO 68th Round household data (~1 lakh observations) to compare consumption structures in Tamil Nadu and Maharashtra. By estimating subsistence floors, marginal budget shares, and expenditure elasticities, the study shows that Tamil Nadu's lower multidimensional poverty stems not from higher income but from a lower private subsistence burden — enabled by stronger public welfare infrastructure.</p>
+</div>
+
+<div class="content-wrap">
+
+  <div class="section">
+    <div class="contrib-box">
+      <p class="contrib-label">My Contribution</p>
+      <p>Responsible for LES model estimation, Engel curve derivation, and state-level comparison of marginal budget shares. Contributed to AIDS specification, interpretation of income and state-level effects, and the welfare implications section.</p>
+    </div>
+
+    <h2 class="section-heading">Key Findings at a Glance</h2>
+    <div class="findings-grid">
+      <div class="finding-card"><div class="finding-num">−0.14</div><div class="finding-label">AIDS food budget share coefficient — negative, confirming Engel's Law across both states</div></div>
+      <div class="finding-card"><div class="finding-num">0.41</div><div class="finding-label">Maharashtra's marginal budget share for EduMed — highest among all groups, signals weak public provision</div></div>
+      <div class="finding-card"><div class="finding-num">0.49</div><div class="finding-label">Tamil Nadu's marginal budget share for Miscellaneous — reflects greater discretionary capacity</div></div>
+      <div class="finding-card"><div class="finding-num">2.2% vs 11.9%</div><div class="finding-label">MPI poverty rates — Tamil Nadu vs Maharashtra, despite comparable per capita incomes</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-heading">Research Question &amp; Motivation</h2>
+    <p>Maharashtra and Tamil Nadu have broadly comparable per capita incomes, yet Tamil Nadu's Multidimensional Poverty Index rate (2.20%) is dramatically lower than Maharashtra's (11.85%). Standard income-based frameworks cannot explain this divergence. This paper asks: do differences in household consumption structure — specifically subsistence requirements and supernumerary income allocation — explain the welfare gap?</p>
+    <p>The study draws on Stiglitz's argument that "economic growth is only a means to an end" and Drèze and Sen's observation that growth is a "leaky support" for human development. Maharashtra's GSDP of ₹45.3 lakh crore (13.5% of India's GDP) has not translated into proportionate welfare gains — pointing to structural inefficiencies in how income is converted into household welfare.</p>
+  </div>
+
+  <div class="section">
+    <h2 class="section-heading">Data</h2>
+    <p>The NSSO 68th Round Household Consumer Expenditure Survey (2011–12) covers approximately 1,01,662 households nationally, with sufficient state-level samples for robust demand system estimation. Expenditure is aggregated into four composite commodity groups: Food &amp; Beverages, Clothing, Education &amp; Medical (EduMed), and Miscellaneous.</p>
+    <div style="overflow-x:auto;">
+      <table class="data-table">
+        <thead><tr><th>Category</th><th>Maharashtra (₹/month)</th><th>Tamil Nadu (₹/month)</th></tr></thead>
+        <tbody>
+          <tr><td>Food &amp; Beverages</td><td>9,313</td><td>7,231</td></tr>
+          <tr><td>Clothing</td><td>1,231</td><td>862</td></tr>
+          <tr><td>Education &amp; Medical</td><td>1,191</td><td>860</td></tr>
+          <tr><td>Miscellaneous</td><td>7,270</td><td>5,344</td></tr>
+          <tr><td>Total Expenditure</td><td>19,005</td><td>14,297</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Maharashtra shows higher absolute spending across all categories but significantly greater within-state variability — suggesting uneven distribution of consumption gains. Tamil Nadu's lower standard deviations indicate a more equitable expenditure pattern.</p>
+  </div>
+
+  <div class="section">
+    <h2 class="section-heading">Methodology</h2>
+    <div class="method-row">
+      <div class="method-card">
+        <p class="method-name">Linear Expenditure System (LES) — Stone-Geary</p>
+        <p class="method-desc">Maximises U = Σβᵢ ln(qᵢ − γᵢ) subject to budget constraint. The γᵢ parameters capture minimum required (subsistence) consumption; βᵢ captures how supernumerary income is allocated. Estimated as Engel curves — commodity expenditure regressed on total expenditure. Adding-up (Σβᵢ = 1) and regularity (X ≥ ΣPᵢγᵢ) conditions imposed. Yields own-price, cross-price, and expenditure elasticities.</p>
+      </div>
+      <div class="method-card">
+        <p class="method-name">Almost Ideal Demand System (AIDS) — Deaton &amp; Muellbauer</p>
+        <p class="method-desc">Derived from PIGLOG preferences. Budget share equations wᵢ = αᵢ + Σγᵢⱼ log pⱼ + βᵢ log(x/P) estimated in Working-Leser form (price variation unavailable). Adding-up, homogeneity, and symmetry restrictions imposed. Negative βᵢ = necessity; positive βᵢ = luxury. State, social group, and religion fixed effects included. Goodness of fit: food R² = 0.41 (strong); EduMed R² = 0.11 (moderate).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-heading">LES Results — Marginal Budget Shares</h2>
+    <div style="overflow-x:auto;">
+      <table class="data-table">
+        <thead><tr><th>Category</th><th>Maharashtra (βᵢ)</th><th>Tamil Nadu (βᵢ)</th><th>Classification</th></tr></thead>
+        <tbody>
+          <tr><td>Food &amp; Beverages</td><td>0.145</td><td>0.202</td><td>Necessity</td></tr>
+          <tr><td>Clothing</td><td>0.049</td><td>0.062</td><td>Normal</td></tr>
+          <tr><td>Education &amp; Medical</td><td>0.412</td><td>0.248</td><td>Luxury</td></tr>
+          <tr><td>Miscellaneous</td><td>0.394</td><td>0.488</td><td>Luxury</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="result-box">
+      <p><strong>Maharashtra's EduMed marginal share (0.41) is 66% higher than Tamil Nadu's (0.25)</strong> — meaning Maharashtra households must spend a far greater fraction of any income increase on private education and healthcare. This reflects weaker public provision, not higher welfare.</p>
+      <p><strong>Tamil Nadu's higher Miscellaneous share (0.49 vs 0.39)</strong> indicates that once the lower subsistence burden is met, households have greater capacity for discretionary spending — a structural welfare advantage that income figures alone do not capture.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-heading">AIDS Results — Budget Share Income Effects</h2>
+    <div style="overflow-x:auto;">
+      <table class="data-table">
+        <thead><tr><th>Category</th><th>Maharashtra (βᵢ)</th><th>Tamil Nadu (βᵢ)</th><th>Engel Classification</th></tr></thead>
+        <tbody>
+          <tr><td>Food</td><td>−0.150</td><td>−0.141</td><td>Necessity (share falls with income)</td></tr>
+          <tr><td>Clothing</td><td>0.049</td><td>0.062</td><td>Normal</td></tr>
+          <tr><td>Education &amp; Medical</td><td>0.039</td><td>0.046</td><td>Luxury</td></tr>
+          <tr><td>Miscellaneous</td><td>0.088</td><td>0.064</td><td>Luxury</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The Tamil Nadu state effect (relative to Maharashtra baseline) shows food share is 3.7 percentage points lower and miscellaneous share is 3.7 percentage points higher — confirming structurally lower subsistence burden and greater discretionary capacity in Tamil Nadu. Religion and social group fixed effects are statistically significant across multiple categories, confirming that socio-cultural factors shape consumption allocation beyond income.</p>
+  </div>
+
+  <div class="section">
+    <h2 class="section-heading">State-Level Welfare Interpretation</h2>
+    <div class="compare-grid">
+      <div class="compare-card">
+        <p class="compare-state">Maharashtra</p>
+        <ul>
+          <li>Highest GSDP in India (₹45.3 lakh crore, 13.5% of national GDP)</li>
+          <li>Higher absolute household expenditure but unequal distribution</li>
+          <li>High EduMed marginal share — households bear private education/health costs</li>
+          <li>MPI poverty rate: 11.85% — growth has not translated to welfare</li>
+          <li>Greater expenditure variability signals within-state inequality</li>
+        </ul>
+      </div>
+      <div class="compare-card">
+        <p class="compare-state">Tamil Nadu</p>
+        <ul>
+          <li>GSDP ₹31.1 lakh crore, per capita income ₹3,15,220 (vs Maharashtra's ₹2,78,681)</li>
+          <li>Lower absolute spending but more equitable and stable distribution</li>
+          <li>Low EduMed marginal share — public welfare infrastructure absorbs costs</li>
+          <li>MPI poverty rate: 2.20% — welfare-first model demonstrably works</li>
+          <li>Higher discretionary income capacity reflects lower subsistence burden</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-heading">Policy Implications</h2>
+    <p>The central finding is that Tamil Nadu's welfare advantage is structural rather than income-driven. Strong public provision of education, healthcare, and food security reduces the private subsistence burden, allowing households to allocate income toward discretionary and welfare-enhancing consumption. Maharashtra's higher income growth has remained "leaky" — welfare gains have not reached the household level proportionately.</p>
+    <p>For high-poverty states, the priority should be reducing private subsistence costs: strengthening the PDS, expanding primary healthcare, and subsidising essential goods. Conditional cash transfers, scholarships, and skill development vouchers could further redirect income toward human capital categories where current elasticities are low. Critically, the results argue against uniform national welfare policy — state-specific consumption structures and public service availability require differentiated, regionally calibrated interventions.</p>
+  </div>
+
+  <a href="index.html#projects" class="back-btn">← Back to All Projects</a>
+</div>
+
+<footer>© 2026 Purvasha Nidar &nbsp;·&nbsp; Delhi School of Economics</footer>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revitalising Hedge Funds — Purvasha Nidar</title>
+
+
+<style>
+  :root { --bg:#F8F7F5; --white:#FFFFFF; --navy:#1B2B4B; --navy-pale:#EEF1F7; --ink:#111111; --ink2:#3A3A3A; --ink3:#888888; --border:rgba(27,43,75,0.1); --border-soft:rgba(0,0,0,0.06); }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-weight:400; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(248,247,245,0.95); backdrop-filter:blur(10px); border-bottom:1px solid var(--border-soft); height:58px; display:flex; align-items:center; justify-content:space-between; padding:0 max(1.5rem,6vw); }
+  .nav-logo { font-weight:600; font-size:0.9rem; color:var(--navy); text-decoration:none; }
+  .nav-back { font-size:0.75rem; font-weight:500; color:var(--ink3); text-decoration:none; display:flex; align-items:center; gap:0.4rem; transition:color 0.18s; }
+  .nav-back:hover { color:var(--navy); }
+  .proj-hero { padding:100px max(1.5rem,8vw) 60px; max-width:900px; margin:0 auto; }
+  .proj-label { font-size:0.68rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--navy); margin-bottom:1rem; display:flex; align-items:center; gap:0.6rem; }
+  .proj-label::before { content:''; width:20px; height:1.5px; background:var(--navy); display:block; }
+  .proj-title { font-family:Georgia,'Times New Roman',serif; font-size:clamp(1.8rem,4vw,2.8rem); font-weight:600; color:var(--ink); line-height:1.12; margin-bottom:1.25rem; letter-spacing:-0.02em; }
+  .proj-meta { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:2rem; }
+  .meta-tag { font-size:0.68rem; font-weight:600; letter-spacing:0.06em; padding:0.28rem 0.7rem; background:var(--navy-pale); color:var(--navy); border-radius:2px; }
+  .proj-abstract { font-size:1rem; font-weight:300; color:var(--ink2); line-height:1.9; border-left:3px solid var(--navy); padding-left:1.25rem; margin-bottom:3rem; }
+  .content-wrap { max-width:900px; margin:0 auto; padding:0 max(1.5rem,8vw) 80px; }
+  .section { margin-bottom:3rem; }
+  .section-heading { font-family:Georgia,'Times New Roman',serif; font-size:1.25rem; font-weight:600; color:var(--ink); margin-bottom:1rem; padding-bottom:0.5rem; border-bottom:1px solid var(--border); letter-spacing:-0.01em; }
+  .section p { font-size:0.93rem; font-weight:300; color:var(--ink2); line-height:1.85; margin-bottom:0.875rem; }
+  .section p:last-child { margin-bottom:0; }
+  .findings-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--border); border:1px solid var(--border); margin:1.5rem 0; }
+  .finding-card { background:var(--white); padding:1.5rem; }
+  .finding-num { font-family:Georgia,'Times New Roman',serif; font-size:1.5rem; font-weight:600; color:var(--navy); line-height:1; margin-bottom:0.4rem; }
+  .finding-label { font-size:0.78rem; font-weight:400; color:var(--ink2); line-height:1.5; }
+  .allocation-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); border:1px solid var(--border); margin:1.25rem 0; }
+  .alloc-card { background:var(--white); padding:1.25rem; }
+  .alloc-pct { font-family:Georgia,'Times New Roman',serif; font-size:1.8rem; font-weight:600; color:var(--navy); line-height:1; margin-bottom:0.25rem; }
+  .alloc-name { font-size:0.8rem; font-weight:600; color:var(--ink); margin-bottom:0.2rem; }
+  .alloc-desc { font-size:0.76rem; font-weight:300; color:var(--ink3); }
+  .regime-table { width:100%; border-collapse:collapse; margin:1.25rem 0; font-size:0.82rem; }
+  .regime-table th { background:var(--navy); color:white; padding:0.65rem 0.875rem; text-align:center; font-weight:500; font-size:0.72rem; letter-spacing:0.05em; }
+  .regime-table td { padding:0.65rem 0.875rem; border-bottom:1px solid var(--border-soft); color:var(--ink2); font-weight:300; text-align:center; }
+  .regime-table td:first-child { font-weight:500; color:var(--navy); text-align:left; }
+  .regime-table tr:last-child td { border-bottom:none; }
+  .regime-table tr:nth-child(even) td { background:var(--bg); }
+  .perf-table { width:100%; border-collapse:collapse; margin:1.25rem 0; font-size:0.85rem; }
+  .perf-table th { background:var(--navy); color:white; padding:0.65rem 1rem; text-align:left; font-weight:500; font-size:0.75rem; letter-spacing:0.05em; }
+  .perf-table td { padding:0.65rem 1rem; border-bottom:1px solid var(--border-soft); color:var(--ink2); font-weight:300; }
+  .perf-table tr:last-child td { border-bottom:none; }
+  .perf-table tr.best td { background:var(--navy-pale); color:var(--navy); font-weight:500; }
+  .result-box { background:var(--navy); color:white; padding:1.5rem 2rem; margin:1.5rem 0; border-radius:2px; }
+  .result-box p { font-size:0.9rem; font-weight:300; color:rgba(255,255,255,0.85); line-height:1.75; margin-bottom:0.5rem; }
+  .result-box p:last-child { margin-bottom:0; }
+  .result-box strong { color:white; font-weight:600; }
+  .back-btn { display:inline-flex; align-items:center; gap:0.5rem; font-size:0.78rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--navy); text-decoration:none; border:1.5px solid var(--navy); padding:0.7rem 1.5rem; transition:all 0.18s; margin-top:1rem; }
+  .back-btn:hover { background:var(--navy); color:white; }
+  footer { background:var(--ink); color:rgba(255,255,255,0.3); text-align:center; padding:1.75rem; font-size:0.72rem; }
+  @media(max-width:600px) { .allocation-grid,.regime-table { font-size:0.75rem; } }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Purvasha Nidar</a>
+  <a href="index.html#projects" class="nav-back">← Back to Research</a>
+</nav>
+
+<div class="proj-hero">
+  <p class="proj-label">KaryaNeeti E-Summit · NSUT Delhi · Case Competition Finalist</p>
+  <h1 class="proj-title">Revitalising Hedge Funds in a Post-COVID, High Volatility World</h1>
+  <div class="proj-meta">
+    <span class="meta-tag">Financial Strategy</span><span class="meta-tag">Portfolio Management</span><span class="meta-tag">Quant Methods</span><span class="meta-tag">ML Regime Switching</span><span class="meta-tag">ESG</span><span class="meta-tag">Finalist — 400+ Teams</span>
+  </div>
+  <p class="proj-abstract">Presented by Team Wednesday at KaryaNeeti, NSUT's national case competition. We proposed a specialised niche hedge fund strategy for India's emerging market, combining quant equity long-short, global macro, volatility strategies, and alternative data signals — with ML-based regime switching and a reformed fee structure. The fund targets 15% annualised returns with a Sharpe Ratio of 1.35, outperforming both the Nifty 50 and Global ETF benchmarks.</p>
+</div>
+
+<div class="content-wrap">
+
+  <div class="section">
+    <h2 class="section-heading">Competition Context</h2>
+    <p>KaryaNeeti is a national-level case competition on business and financial strategy, organised by the Entrepreneurship Cell at NSUT, Delhi. Our team — Team Wednesday — reached the finals out of 400+ competing teams, presenting to a panel of judges on hedge fund strategy, portfolio construction, and risk management.</p>
+    <p>The problem statement: traditional hedge funds are underperforming passive benchmarks post-COVID, fee structures face pressure from passive ETFs, and India's hedge fund industry remains underdeveloped despite being a $5.7 trillion global market with rising capital inflows. How should a new fund be structured to revitalise the model?</p>
+  </div>
+
+  <div class="section">
+    <h2 class="section-heading">Proposed Strategy at a Glance</h2>
+    <div class="findings-grid">
+      <div class="finding-card"><div class="finding-num">15%</div><div class="finding-label">Target annualised return vs 11% for Nifty 50 and 9% for Global ETF</div></div>
+      <div class="finding-card"><div class="finding-num">1.35</div><div class="finding-label">Target Sharpe Ratio — significantly stronger than Nifty (0.75) and Global ETF (0.85)</div></div>
+      <div class="finding-card"><div class="finding-num">−12%</div><div class="finding-label">Maximum drawdown — much smaller than Nifty's −28%, reflecting superior downside protection</div></div>
+      <div class="finding-card"><div class="finding-num">₹1.5T</div><div class="finding-label">Target market size by 2030 across the four niche sectors identified</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-heading">Why Specialised Niche Over Multi-Strategy?</h2>
+    <p>We argued that for an emerging market fund targeting India's high-growth sectors, a specialised niche strategy offers deeper expertise, competitive moats from domain knowledge, and early-stage access to transformative sectors — while a multi-strategy approach would require operational complexity and capital scale that a new fund cannot efficiently deploy.</p>
+    <div class="allocation-grid">
+      <div class="alloc-card"><div class="alloc-pct">40%</div><div class="alloc-name">Digital Payment Ecosystem</div><div class="alloc-desc">$990B market opportunity. UPI transaction data, sentiment signals, fintech disruption plays.</div></div>
+      <div class="alloc-card"><div class="alloc-pct">25%</div><div class="alloc-name">Supply Chain Technology</div><div class="alloc-desc">Post-COVID infrastructure rebuilding. $500B+ market target. Logistics, warehousing, last-mile tech.</div></div>
+      <div class="alloc-card"><div class="alloc-pct">20%</div><div class="alloc-name">Green Energy Transition</div><div class="alloc-desc">$384B investment pipeline. Solar, wind, storage infrastructure in India's net-zero transition.</div></div>
+      <div class="alloc-card"><div class="alloc-pct">15%</div><div class="alloc-name">Healthcare Technology</div><div class="alloc-desc">Pandemic-driven digital health adoption. $93B+ target market with 32% CAGR expected.</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-heading">Core Portfolio &amp; ML-Based Regime Switching</h2>
+    <p>The core portfolio allocates across four strategy types: Quant Equity Long-Short (40%), Global Macro in FX/Rates/Commodities (25%), Volatility Strategies via Options/VIX (20%), and India-specific Alternative Data Bets (15%). Crucially, these allocations shift dynamically based on an ML-detected market regime.</p>
+    <table class="regime-table">
+      <thead><tr><th>Regime</th><th>Equity</th><th>Macro</th><th>Volatility</th><th>Alt Data</th><th>Target Vol</th><th>Leverage</th></tr></thead>
+      <tbody>
+        <tr><td>Bull</td><td>45%</td><td>20%</td><td>15%</td><td>20%</td><td>12%</td><td>1.4x</td></tr>
+        <tr><td>Bear</td><td>30%</td><td>25%</td><td>25%</td><td>20%</td><td>8%</td><td>0.8x</td></tr>
+        <tr><td>Sideways</td><td>40%</td><td>25%</td><td>20%</td><td>15%</td><td>10%</td><td>1.0x</td></tr>
+        <tr><td>Crisis</td><td>25%</td><td>30%</td><td>30%</td><td>15%</td><td>6%</td><td>0.6x</td></tr>
+      </tbody>
+    </table>
+    <p>India-specific hedging overlays include monsoon-linked agricultural derivatives (satellite signals), festival-season volatility arbitrage (Diwali option straddles), policy-announcement NLP hedges on budget and RBI speeches, and GIFT City cross-border arbitrage.</p>
+  </div>
+
+  <div class="section">
+    <h2 class="section-heading">Reformed Fee Structure</h2>
+    <p>We proposed moving beyond the traditional "2 and 20" model, which faces mounting pressure from passive ETF growth and investor demands for transparency.</p>
+    <div class="result-box">
+      <p><strong>Lower management fee (1.75%):</strong> Signals cost discipline while covering core operational expenses.</p>
+      <p><strong>Performance hurdle:</strong> Performance fee charged only on returns above NIFTY50 benchmark — investors pay for alpha, not beta.</p>
+      <p><strong>High-water mark:</strong> Fee applies only to profits exceeding previous peaks, preventing double-charging in volatile markets.</p>
+      <p><strong>Long-term incentives:</strong> Fee reductions for commitments exceeding 3 years, aligning fund growth with investor success.</p>
+    </div>
+    <table class="perf-table">
+      <thead><tr><th>Model</th><th>Gross Return</th><th>Mgmt Fee</th><th>Performance Fee</th><th>Net Profit (₹Cr)</th></tr></thead>
+      <tbody>
+        <tr><td>Traditional (2&20)</td><td>15%</td><td>2%</td><td>20% of total profits</td><td>10</td></tr>
+        <tr class="best"><td>Our Proposed Model</td><td>15%</td><td>1.75%</td><td>25% above NIFTY50</td><td>12.5</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2 class="section-heading">Technology &amp; Regulatory Framework</h2>
+    <p>On the technology side, we proposed reinforcement learning for trade execution (minimising slippage, as used by Citadel and Two Sigma globally), leverage of NSE co-location infrastructure for HFT, and a blockchain-based investor dashboard showing live NAV, risk exposure, and ESG compliance scores — inspired by Bridgewater's radical transparency ethos.</p>
+    <p>For regulation, the fund would operate as a SEBI Category III AIF, with minimum investment of ₹1 crore per investor targeting sophisticated and institutional capital. Ethical guardrails include zero tolerance for insider trading, use of only legal and anonymised alternative data sources, and real-time compliance dashboards with tech-enabled breach alerts.</p>
+  </div>
+
+  <a href="index.html#projects" class="back-btn">← Back to All Projects</a>
+</div>
+
+<footer>© 2026 Purvasha Nidar &nbsp;·&nbsp; Delhi School of Economics</footer>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trade Liberalisation & Wage Dynamics — Purvasha Nidar</title>
+
+
+<style>
+  :root { --bg:#F8F7F5; --white:#FFFFFF; --navy:#1B2B4B; --navy-pale:#EEF1F7; --ink:#111111; --ink2:#3A3A3A; --ink3:#888888; --border:rgba(27,43,75,0.1); --border-soft:rgba(0,0,0,0.06); }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-weight:400; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(248,247,245,0.95); backdrop-filter:blur(10px); border-bottom:1px solid var(--border-soft); height:58px; display:flex; align-items:center; justify-content:space-between; padding:0 max(1.5rem,6vw); }
+  .nav-logo { font-weight:600; font-size:0.9rem; color:var(--navy); text-decoration:none; }
+  .nav-back { font-size:0.75rem; font-weight:500; color:var(--ink3); text-decoration:none; display:flex; align-items:center; gap:0.4rem; transition:color 0.18s; }
+  .nav-back:hover { color:var(--navy); }
+  .proj-hero { padding:100px max(1.5rem,8vw) 60px; max-width:900px; margin:0 auto; }
+  .proj-label { font-size:0.68rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--navy); margin-bottom:1rem; display:flex; align-items:center; gap:0.6rem; }
+  .proj-label::before { content:''; width:20px; height:1.5px; background:var(--navy); display:block; }
+  .proj-title { font-family:Georgia,'Times New Roman',serif; font-size:clamp(1.8rem,4vw,2.8rem); font-weight:600; color:var(--ink); line-height:1.12; margin-bottom:1.25rem; letter-spacing:-0.02em; }
+  .proj-meta { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:2rem; }
+  .meta-tag { font-size:0.68rem; font-weight:600; letter-spacing:0.06em; padding:0.28rem 0.7rem; background:var(--navy-pale); color:var(--navy); border-radius:2px; }
+  .proj-abstract { font-size:1rem; font-weight:300; color:var(--ink2); line-height:1.9; border-left:3px solid var(--navy); padding-left:1.25rem; margin-bottom:3rem; }
+  .content-wrap { max-width:900px; margin:0 auto; padding:0 max(1.5rem,8vw) 80px; }
+  .section { margin-bottom:3rem; }
+  .section-heading { font-family:Georgia,'Times New Roman',serif; font-size:1.25rem; font-weight:600; color:var(--ink); margin-bottom:1rem; padding-bottom:0.5rem; border-bottom:1px solid var(--border); letter-spacing:-0.01em; }
+  .section p { font-size:0.93rem; font-weight:300; color:var(--ink2); line-height:1.85; margin-bottom:0.875rem; }
+  .section p:last-child { margin-bottom:0; }
+  .findings-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--border); border:1px solid var(--border); margin:1.5rem 0; }
+  .finding-card { background:var(--white); padding:1.5rem; }
+  .finding-num { font-family:Georgia,'Times New Roman',serif; font-size:1.5rem; font-weight:600; color:var(--navy); line-height:1; margin-bottom:0.4rem; }
+  .finding-label { font-size:0.78rem; font-weight:400; color:var(--ink2); line-height:1.5; }
+  .data-table { width:100%; border-collapse:collapse; margin:1.25rem 0; font-size:0.84rem; }
+  .data-table th { background:var(--navy); color:white; padding:0.65rem 1rem; text-align:left; font-weight:500; font-size:0.75rem; letter-spacing:0.05em; }
+  .data-table td { padding:0.65rem 1rem; border-bottom:1px solid var(--border-soft); color:var(--ink2); font-weight:300; }
+  .data-table tr:last-child td { border-bottom:none; }
+  .data-table tr:nth-child(even) td { background:var(--bg); }
+  .data-table td:first-child { font-weight:500; color:var(--ink); }
+  .result-box { background:var(--navy); color:white; padding:1.5rem 2rem; margin:1.5rem 0; border-radius:2px; }
+  .result-box p { font-size:0.9rem; font-weight:300; color:rgba(255,255,255,0.85); line-height:1.75; margin-bottom:0.5rem; }
+  .result-box p:last-child { margin-bottom:0; }
+  .result-box strong { color:white; font-weight:600; }
+  .contrib-box { background:var(--bg); border:1px solid var(--border); padding:1.25rem 1.5rem; margin-bottom:2rem; border-radius:2px; }
+  .contrib-label { font-size:0.63rem; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:var(--navy); margin-bottom:0.5rem; }
+  .contrib-box p { font-size:0.86rem; font-weight:300; color:var(--ink2); line-height:1.7; }
+  .spec-box { background:var(--bg); border:1px solid var(--border); border-left:3px solid var(--navy); padding:1.25rem 1.5rem; margin:1.25rem 0; font-family:'Courier New', monospace; font-size:0.82rem; color:var(--ink2); line-height:1.7; overflow-x:auto; }
+  .back-btn { display:inline-flex; align-items:center; gap:0.5rem; font-size:0.78rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--navy); text-decoration:none; border:1.5px solid var(--navy); padding:0.7rem 1.5rem; transition:all 0.18s; margin-top:1rem; }
+  .back-btn:hover { background:var(--navy); color:white; }
+  footer { background:var(--ink); color:rgba(255,255,255,0.3); text-align:center; padding:1.75rem; font-size:0.72rem; }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Purvasha Nidar</a>
+  <a href="index.html#projects" class="nav-back">← Back to Research</a>
+</nav>
+
+<div class="proj-hero">
+  <p class="proj-label">EC702 Trade and Development · Delhi School of Economics · Solo Paper</p>
+  <h1 class="proj-title">Free Trade, Fair Outcomes? Trade Liberalisation &amp; Industry-Level Wage Dynamics in Post-Reform India</h1>
+  <div class="proj-meta">
+    <span class="meta-tag">Fixed Effects Panel Regression</span>
+    <span class="meta-tag">Structural Break (1991)</span>
+    <span class="meta-tag">Difference-in-Differences</span>
+    <span class="meta-tag">RBI KLEMS Data</span>
+    <span class="meta-tag">27 Industries · 1980–2022</span>
+    <span class="meta-tag">N = 1,161</span>
+    <span class="meta-tag">R</span>
+  </div>
+  <p class="proj-abstract">Using 40 years of industry-level panel data from the RBI KLEMS database, this paper examines whether India's 1991 trade liberalisation produced differential wage outcomes across export-oriented and non-export industries. A fixed-effects regression with a structural break at 1991 finds that export-oriented industries earned a statistically significant real wage premium of approximately 21–24% post-liberalisation — consistent with New Trade Theory but raising persistent distributional concerns.</p>
+</div>
+
+<div class="content-wrap">
+
+  <div class="section">
+    <div class="contrib-box">
+      <p class="contrib-label">Solo Paper — Key Focus Areas</p>
+      <p>Independent research paper. Core contributions: construction of the wage variable from KLEMS labour share, gross output, and employment data; fixed-effects panel regression with structural break specification; parallel pre-trends validation; robustness checks with year fixed effects; interpretation of the interaction coefficient in percentage terms using log specification.</p>
+    </div>
+
+    <h2 class="section-heading">Key Results at a Glance</h2>
+    <div class="findings-grid">
+      <div class="finding-card"><div class="finding-num">21.8%</div><div class="finding-label">Additional real wage growth in export-oriented industries post-1991 (log coefficient: 0.2186, p &lt; 0.01)</div></div>
+      <div class="finding-card"><div class="finding-num">~24%</div><div class="finding-label">Semi-elasticity interpretation: (e^0.2186 − 1) × 100 ≈ 24.4% — actual % wage premium in levels</div></div>
+      <div class="finding-card"><div class="finding-num">0.945</div><div class="finding-label">R² with both industry and year fixed effects — high explanatory power across 1,161 observations</div></div>
+      <div class="finding-card"><div class="finding-num">1%</div><div class="finding-label">Significance level for interaction term Export × Post1991 across all model specifications</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-heading">Data Construction</h2>
+    <p>The RBI KLEMS database does not directly report industry wage rates. Real wages were constructed from available variables using the following formula:</p>
+    <div class="spec-box">Wage_it = (LS_it × GO_it) / L_it</div>
+    <p>where LS_it is the labour income share in gross output, GO_it is gross output in constant prices, and L_it is total employment for industry i at time t. This produces real wage per worker consistent across industries and over time, capturing the share of production attributable to labour divided by number of workers employed.</p>
+    <p>Industries were classified into two groups based on their historically dominant participation in India's merchandise export basket (sourced from RBI and DGCI&S data). Export-oriented industries include textiles, chemicals, basic metals, machinery, electrical and optical equipment, transport equipment, and other high-export-share manufacturing sub-sectors. Non-export industries include agriculture, food products, construction, electricity and water supply, trade, and services.</p>
+    <div style="overflow-x:auto;">
+      <table class="data-table">
+        <thead><tr><th>Variable</th><th>Description</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td>ln(Wage_it)</td><td>Log real wage per worker — dependent variable</td><td>Constructed from KLEMS</td></tr>
+          <tr><td>ExportDummy_i</td><td>1 if industry is export-oriented, 0 otherwise</td><td>RBI / DGCI&S classification</td></tr>
+          <tr><td>Post1991_t</td><td>1 for years ≥ 1992, 0 otherwise — structural break dummy</td><td>Author-constructed</td></tr>
+          <tr><td>Trend_t</td><td>Linear time trend</td><td>Author-constructed</td></tr>
+          <tr><td>Export × Post1991</td><td>Interaction term — coefficient of interest (β₄)</td><td>Author-constructed</td></tr>
+          <tr><td>γᵢ</td><td>Industry fixed effects</td><td>27 KLEMS industries</td></tr>
+          <tr><td>δt</td><td>Year fixed effects</td><td>1980–2022</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-heading">Empirical Specification</h2>
+    <p>The main regression specification is a fixed-effects panel model with a structural break at 1991:</p>
+    <div class="spec-box">ln(Wage_it) = α + β₁Trend_t + β₂Post1991_t + β₃Export_i + β₄(Export_i × Post1991_t) + γᵢ + δt + ε_it</div>
+    <p>The coefficient of interest is β₄ — the interaction between export status and the post-1991 dummy. This captures the differential wage trajectory of export-oriented industries after liberalisation, net of any general post-1991 trend (captured by β₂) and any time-invariant industry-level wage advantage (captured by β₃ and γᵢ).</p>
+    <p>Pre-liberalisation parallel trends were formally validated: export and non-export industries followed statistically comparable wage paths prior to 1991, satisfying the key identifying assumption. The log-wage specification minimises heteroskedasticity and allows direct percentage interpretation of coefficients. Year fixed effects absorb global shocks including the 1997 Asian crisis, the 2008 financial crisis, and COVID-19.</p>
+  </div>
+
+  <div class="section">
+    <h2 class="section-heading">Results</h2>
+    <div style="overflow-x:auto;">
+      <table class="data-table">
+        <thead><tr><th>Variable</th><th>Coefficient</th><th>Std. Error</th><th>Significance</th></tr></thead>
+        <tbody>
+          <tr><td>Intercept</td><td>9.547</td><td>0.047</td><td>***</td></tr>
+          <tr><td>Trend</td><td>0.0282</td><td>0.0044</td><td>***</td></tr>
+          <tr><td>Post1991</td><td>−0.406</td><td>0.0410</td><td>***</td></tr>
+          <tr><td>ExportDummy</td><td>1.501</td><td>0.0577</td><td>***</td></tr>
+          <tr><td>Export × Post1991</td><td>0.2186</td><td>0.0336</td><td>***</td></tr>
+          <tr><td>Industry Fixed Effects</td><td>Yes</td><td>—</td><td>—</td></tr>
+          <tr><td>Year Fixed Effects</td><td>Yes</td><td>—</td><td>—</td></tr>
+          <tr><td>R²</td><td>0.9452</td><td>—</td><td>—</td></tr>
+          <tr><td>Observations</td><td>1,161</td><td>—</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:0.78rem; color:var(--ink3); margin-top:0.5rem;">*** p &lt; 0.01</p>
+    <div class="result-box">
+      <p><strong>Interaction term (β₄ = 0.2186):</strong> Export-oriented industries earned approximately 21.8% more in real wages post-1991 compared to non-export industries, holding industry and year fixed effects constant. Using the semi-elasticity formula (e^0.2186 − 1) × 100 ≈ 24.4% in levels.</p>
+      <p><strong>Post1991 coefficient (−0.406):</strong> The negative baseline Post1991 dummy reflects short-run adjustment effects following liberalisation — a temporary wage compression across all industries before the export premium materialised.</p>
+      <p><strong>Trend coefficient (0.0282):</strong> Positive and significant — confirms a secular long-run upward wage trend across industries, independent of liberalisation effects.</p>
+      <p><strong>High R² (0.945):</strong> Industry and year fixed effects together explain most of the variation in log wages, validating the panel structure and reducing omitted variable concerns.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-heading">Interpretation &amp; Theoretical Fit</h2>
+    <p>The results partially support classical Stolper-Samuelson predictions — in a labour-abundant economy like India, trade liberalisation should raise returns to labour in export-intensive sectors. The significant post-export interaction confirms this for manufacturing sub-sectors. However, a pure Stolper-Samuelson reading is weakened by the absence of uniform wage gains across all labour-intensive industries.</p>
+    <p>The results align most closely with New Trade Theory: wage gains concentrated in industries that could scale up and integrate into global value chains, not spread uniformly across the labour force. This has direct fair trade implications — the benefits of liberalisation are industry-specific rather than economy-wide, implying persistent inter-sectoral wage divergence even as aggregate wages rise.</p>
+  </div>
+
+  <div class="section">
+    <h2 class="section-heading">Robustness &amp; Limitations</h2>
+    <p>Year fixed effects absorb all time-varying global shocks. Log specification ensures percentage interpretability and reduces heteroskedasticity. Pre-trend validation confirms the parallel trends assumption holds before 1991. Results are robust across specifications with and without year fixed effects (R² moves from 0.941 to 0.945).</p>
+    <p>Key limitations: the export dummy is binary rather than time-varying, which may miss industries that shifted export orientation post-reform. The wage variable is constructed from labour share data and may carry measurement error. Within-industry heterogeneity (skilled vs. unskilled, formal vs. informal) is not captured. Potential endogeneity from simultaneous capital flows and productivity shocks is noted — instrumental variable or dynamic panel approaches could strengthen causal identification in future work.</p>
+  </div>
+
+  <a href="index.html#projects" class="back-btn">← Back to All Projects</a>
+</div>
+
+<footer>© 2026 Purvasha Nidar &nbsp;·&nbsp; Delhi School of Economics</footer>
+</body>
+</html>
